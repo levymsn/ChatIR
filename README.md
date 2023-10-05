@@ -1,7 +1,8 @@
 # [NeurIPS 2023] Chatting Makes Perfect: Chat-based Image Retrieval 
 #### [[Project Page](https://www.vision.huji.ac.il/chatir/) | [Paper (arxiv)](https://arxiv.org/abs/2305.20062)] #### 
-Welcome to the official repository for the NeurIPS 2023 paper, "Chatting makes perfect: Chat-based Image Retrieval". This paper delves deep into the realm of conversational AI, exploring how chatting mechanisms can lead to perfected models.
+Welcome to the official repository for the NeurIPS 2023 paper, "Chatting makes perfect: Chat-based Image Retrieval"!
 
+Most image searches use just a caption. We took it a step further with ChatIR: our tool that chats with users to pinpoint the perfect image.
 ![Chatting makes perfect banner](banner.png) 
 
 ## Abstract
@@ -13,8 +14,8 @@ Extensive evaluations reveal the strong capabilities and examine the limitations
 ![Chatting makes perfect banner](ChatIR.png) 
 
 ## Table of Contents
-1. [Benchmark](#benchmark)
-2. [Dialogues](#dialogues)
+1. [Benchmark](#benchmark-usage)
+2. [Dialogues](#dialogues-on-images)
 3. [Citation](#citation)
 4. [License](#license)
 
