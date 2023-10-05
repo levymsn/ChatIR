@@ -52,7 +52,12 @@ For detailed results, plots, and analysis, refer to the `results/` directory.
 ## Citation
 If you find our work useful in your research, please consider citing:
 ```
-soon :)
+@inproceedings{levy2023chatting,
+    title={Chatting Makes Perfect: Chat-based Image Retrieval},
+    author={Matan Levy and Rami Ben-Ari and Nir Darshan and Dani Lischinski},
+    booktitle={Thirty-seventh Conference on Neural Information Processing Systems},
+    year={2023}
+}
 ```
 
 ## License
