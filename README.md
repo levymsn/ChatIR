@@ -18,9 +18,6 @@ Extensive evaluations reveal the strong capabilities and examine the limitations
 2. [Dialogues](#dialogues-on-images)
 3. [Citation](#citation)
 4. [License](#license)
-
-Certainly! Here's a clearer and simplified version:
-
 ---
 
 ## Benchmark Usage
