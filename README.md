@@ -16,8 +16,9 @@ Extensive evaluations reveal the strong capabilities and examine the limitations
 ## Table of Contents
 1. [Benchmark](#benchmark-usage)
 2. [Dialogues](#dialogues-on-images)
-3. [Citation](#citation)
-4. [License](#license)
+3. [Fine-tuned Model](#fine-tuned-chat-model)
+4. [Citation](#citation)
+5. [License](#license)
 ---
 
 ## Benchmark Usage
@@ -46,6 +47,14 @@ Images are taken from [COCO](https://cocodataset.org/). Please review VisDial da
 
 For detailed results, plots, and analysis, refer to the `results/` directory.
 
+---
+## Fine-tuned Chat Model
+Here you can download the weights of the [BLIP](https://github.com/salesforce/BLIP) model (referred as Image Retriever) that was fine-tuned on ChatIR.
+This is a simple BLIP text-encoder that we further trained on dialogues from the VisualDialog dataset.
+
+[Download Link](https://drive.google.com/file/d/16HXxAnZzRzTFo9Ay-5nftkRdJCHmUMJA/view?usp=sharing)
+
+---
 ## Citation
 If you find our work useful in your research, please consider citing:
 ```
