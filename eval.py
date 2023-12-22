@@ -2,15 +2,8 @@ import torch
 import tqdm
 import os.path
 import json
-from PIL import Image
 import torch.nn.functional as F
-
-
-class ImageEmbedder:
-    def __init__(self, model, preprocessor):
-        """ model projects image to vector, processor load and prepare image to the model"""
-        self.model = model
-        self.processor = preprocessor
+from baselines import ImageEmbedder, CLIP_ZERO_SHOT_BASELINE, BLIP_BASELINE
 
 
 class Corpus(torch.utils.data.Dataset):
@@ -162,34 +155,30 @@ def cumulative_hits_per_round(target_recall, hitting_recall=10):
     return ((ht_times < torch.inf).sum(dim=-1) * 100 / ht_times[0].shape[0])
 
 
-def CLIP_ZERO_SHOT_BASELINE():
-    # Install CLIP library from https://github.com/openai/CLIP
-    import clip
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    # model, preprocess = clip.load("ViT-B/32", device='cpu')
-    model, preprocess = clip.load("ViT-B/16", device='cpu')
-    model = model.to(device)
-    image_embedder = ImageEmbedder(lambda img: model.encode_image(img), lambda path: preprocess(Image.open(path)))
-    # Note that CLIP supports only 77 tokens!! this is just a baseline.
-    dialog_encoder = lambda text: model.encode_text(clip.tokenize(text, truncate=True).to(device))
-
-    return dialog_encoder, image_embedder
-
-
 if __name__ == '__main__':
-
     cfg = {'corpus_bs': 500,
            'queries_bs': 500,
            'num_workers': 8,
            'sep_token': ', ',  # Separation between dialog rounds
-           'cache_corpus': "temp/corpus_clip_16.pth",  # Cache path for saving indexed corpus
-            'queries_path': 'dialogues/VisDial_v1.0_queries_val.json',
-            'corpus_path': 'ChatIR_Protocol/Search_Space_val_50k.json',
-            'device': 'cuda:0',  # 'cpu'
+           'cache_corpus': '',  # Cache path for saving indexed corpus
+           'queries_path': 'dialogues/VisDial_v1.0_queries_val.json',
+           'corpus_path': 'ChatIR_Protocol/Search_Space_val_50k.json',
+           'device': 'cuda:0',  # 'cpu'
            }
 
     with torch.no_grad():
-        dialog_encoder, image_embedder = CLIP_ZERO_SHOT_BASELINE()
+        # ==== For CLIP zero-shot baseline: =====
+        # baseline = 'clip-zero-shot'
+        # === for BLIP dialog-trained baseline ===
+        baseline = 'blip-dialog-encoder'
+
+        if baseline == 'clip-zero-shot':
+            cfg['cache_corpus'] = "temp/corpus_clip_16.pth"
+            dialog_encoder, image_embedder = CLIP_ZERO_SHOT_BASELINE()
+        else:
+            cfg['cache_corpus'] = "temp/corpus_blip_small.pth"
+            dialog_encoder, image_embedder = BLIP_BASELINE()
+        # ---------
         evaluator = ChatIREval(cfg, dialog_encoder, image_embedder)
         evaluator.index_corpus()
         evaluator.run(hits_at=10)  # Hit@10 as in the paper

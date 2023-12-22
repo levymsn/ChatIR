@@ -26,10 +26,23 @@ Want to test your model on the ChatIR task? Use the script below:
 ```bash
 python eval.py
 ```
-This script uses the CLIP baseline for the ChatIR benchmark, but easy to modify. Remember:
-
+You can run this script with two different baselines (by changing the 'baseline' variable):
+#### 1. CLIP zero-shot baseline:
+Remember: 
 - CLIP is originally trained for captions, not dialogues. So, this is a zero-shot evaluation.
 - Dialogues longer than 77 tokens are cut short due to CLIP's token limit. This affects the accuracy of results.
+- BLIP fine-tuned on dialogues 
+
+#### 2. BLIP fine-tuned on dialogues:
+The Image Retriever (F) that was fine-tuned on dialogues, as described in the paper.
+In order to run this baseline, you need to install the [BLIP repository](https://github.com/salesforce/BLIP) as a sub folder and
+download the model weights from below.
+
+## Fine-tuned Chat Model
+Here you can download the weights of the [BLIP model](https://github.com/salesforce/BLIP) (referred as Image Retriever) that was fine-tuned on ChatIR.
+This is a simple BLIP text-encoder that we further trained on dialogues from the VisualDialog dataset.
+
+[Download Link](https://drive.google.com/file/d/16HXxAnZzRzTFo9Ay-5nftkRdJCHmUMJA/view?usp=sharing)
 
 ---
 ## Dialogues on Images
@@ -46,13 +59,6 @@ Images are taken from [COCO](https://cocodataset.org/). Please review VisDial da
 
 
 For detailed results, plots, and analysis, refer to the `results/` directory.
-
----
-## Fine-tuned Chat Model
-Here you can download the weights of the [BLIP](https://github.com/salesforce/BLIP) model (referred as Image Retriever) that was fine-tuned on ChatIR.
-This is a simple BLIP text-encoder that we further trained on dialogues from the VisualDialog dataset.
-
-[Download Link](https://drive.google.com/file/d/16HXxAnZzRzTFo9Ay-5nftkRdJCHmUMJA/view?usp=sharing)
 
 ---
 ## Citation
