@@ -64,11 +64,16 @@ For detailed results, plots, and analysis, refer to the `results/` directory.
 ## Citation
 If you find our work useful in your research, please consider citing:
 ```
-@inproceedings{levy2023chatting,
-    title={Chatting Makes Perfect: Chat-based Image Retrieval},
-    author={Matan Levy and Rami Ben-Ari and Nir Darshan and Dani Lischinski},
-    booktitle={Thirty-seventh Conference on Neural Information Processing Systems},
-    year={2023}
+@inproceedings{NEURIPS2023_c1b3d1e2,
+ author = {Levy, Matan and Ben-Ari, Rami and Darshan, Nir and Lischinski, Dani},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {A. Oh and T. Neumann and A. Globerson and K. Saenko and M. Hardt and S. Levine},
+ pages = {61437--61449},
+ publisher = {Curran Associates, Inc.},
+ title = {Chatting Makes Perfect: Chat-based Image Retrieval},
+ url = {https://proceedings.neurips.cc/paper_files/paper/2023/file/c1b3d1e2cf53bb28cabd801bd58b3521-Paper-Conference.pdf},
+ volume = {36},
+ year = {2023}
 }
 ```
 
